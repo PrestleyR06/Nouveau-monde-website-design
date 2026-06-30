@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { MapPin, Phone, Mail, Clock, Globe, Music, Send, MessageCircle } from "lucide-react"
+import { MapPin, Phone, Mail, Clock } from "lucide-react"
+import { FaInstagram, FaTiktok, FaFacebookF } from "react-icons/fa6"
 import { Reveal } from "@/components/animations/reveal"
 
 const navLinks = [
@@ -33,32 +34,31 @@ export function SiteFooter() {
               </p>
               <div className="mt-6 flex items-center gap-4">
                 <a
-                  href="#"
+                  href="https://www.instagram.com/nouveaumonde237?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="Instagram"
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
                 >
-                  <Globe className="h-4 w-4" />
+                  <FaInstagram className="h-4 w-4" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.tiktok.com/@nouveau.monde.237"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="TikTok"
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
                 >
-                  <Music className="h-4 w-4" />
+                  <FaTiktok className="h-4 w-4" />
                 </a>
                 <a
-                  href="#"
-                  aria-label="Telegram"
+                  href="https://web.facebook.com/p/Nouveau-Monde-61567352647710"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
                 >
-                  <Send className="h-4 w-4" />
-                </a>
-                <a
-                  href="#"
-                  aria-label="WhatsApp"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
-                >
-                  <MessageCircle className="h-4 w-4" />
+                  <FaFacebookF className="h-4 w-4" />
                 </a>
               </div>
             </div>
