@@ -1,16 +1,31 @@
+import { SiteNav } from "@/components/site-nav"
+import { Hero } from "@/components/sections/hero"
+import { IntroStory } from "@/components/sections/intro-story"
+import { SignatureMenu } from "@/components/sections/signature-menu"
+import { Gaming } from "@/components/sections/gaming"
+import { Stats } from "@/components/sections/stats"
+import { Gallery } from "@/components/sections/gallery"
+import { Promotions } from "@/components/sections/promotions"
+import { Reviews } from "@/components/sections/reviews"
+import { ReservationCta } from "@/components/sections/reservation-cta"
+import { SiteFooter } from "@/components/site-footer"
+
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
-      <main className="flex w-full max-w-3xl flex-col items-center gap-8 px-6 py-16 text-center sm:items-start sm:text-left">
-        <div className="flex flex-col gap-4">
-          <h1 className="text-4xl font-bold tracking-tight">
-            Nouveau monde
-          </h1>
-          <p className="max-w-md text-lg text-muted-foreground">
-            To get started, send a prompt or modify this page directly.
-          </p>
-        </div>
+    <>
+      <SiteNav />
+      <main>
+        <Hero />
+        <IntroStory />
+        <SignatureMenu />
+        <Gaming />
+        <Stats />
+        <Gallery />
+        <Promotions />
+        <Reviews />
+        <ReservationCta />
       </main>
-    </div>
-  );
+      <SiteFooter />
+    </>
+  )
 }
