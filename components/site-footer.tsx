@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
 import { FaInstagram, FaTiktok, FaFacebookF } from "react-icons/fa6"
 import { Reveal } from "@/components/animations/reveal"
@@ -25,8 +26,14 @@ export function SiteFooter() {
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
             {/* Brand */}
             <div className="lg:col-span-1">
-              <Link href="#" className="font-serif text-2xl font-semibold tracking-tight text-foreground">
-                Nouveau<span className="text-primary">.</span>Monde
+              <Link href="#" aria-label="Nouveau Monde Logo">
+                <Image
+                  src="/images/logo.png"
+                  alt="Nouveau Monde Logo"
+                  width={48}
+                  height={48}
+                  className="h-12 w-12 object-contain"
+                />
               </Link>
               <p className="mt-4 max-w-xs text-pretty leading-relaxed text-muted-foreground">
                 Une destination où la haute gastronomie rencontre le divertissement raffiné. Bienvenue dans un nouveau
