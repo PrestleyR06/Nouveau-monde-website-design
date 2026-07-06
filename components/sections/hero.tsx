@@ -24,8 +24,8 @@ export function Hero() {
     >
       <motion.div style={{ y, scale }} className="absolute inset-0">
         <Image
-          src="/images/hero-interior.png"
-          alt="Salle du restaurant Nouveau Monde dans une ambiance dorée"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image.png_2K_202607060108-JpU43fMsgQWSpEgLISeLn9gmCMaAjL.jpeg"
+          alt="Plat savoureux avec crevettes et salade - Nouveau Monde"
           fill
           priority
           className="object-cover"
