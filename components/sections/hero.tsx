@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'motion/react'
-import { Star, ArrowDown } from 'lucide-react'
+import { ArrowDown } from 'lucide-react'
 import { restaurant } from '@/lib/data'
 
 export function Hero() {
@@ -38,18 +38,7 @@ export function Hero() {
         style={{ opacity }}
         className="relative z-10 mx-auto w-full max-w-[1400px] px-5 pb-16 pt-32 sm:px-8 sm:pb-24"
       >
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/30 px-4 py-2 backdrop-blur-md"
-        >
-          <Star className="h-4 w-4 fill-primary text-primary" />
-          <span className="text-xs font-medium tracking-wide text-foreground/90">
-            {restaurant.rating} / 5 · {restaurant.reviewsCount.toLocaleString('fr-FR')} avis ·{' '}
-            {restaurant.city}, {restaurant.country}
-          </span>
-        </motion.div>
+
 
         <h1 className="max-w-4xl text-balance font-serif text-5xl font-medium leading-[0.95] tracking-tight sm:text-7xl lg:text-8xl">
           <span className="block overflow-hidden">
