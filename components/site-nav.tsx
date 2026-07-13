@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'motion/react'
 import { Menu, X, Phone } from 'lucide-react'
 import { navLinks, restaurant } from '@/lib/data'
@@ -35,12 +36,13 @@ export function SiteNav() {
     >
       <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between gap-4 px-5 sm:h-20 sm:px-8">
         <a href="#accueil" className="group flex items-center gap-2" aria-label="Nouveau Monde, accueil">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-primary/40 font-serif text-lg font-semibold text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-            N
-          </span>
-          <span className="font-serif text-lg font-semibold tracking-wide sm:text-xl">
-            Nouveau <span className="text-primary">Monde</span>
-          </span>
+          <Image
+            src="/images/logo.png"
+            alt="Nouveau Monde Logo"
+            width={36}
+            height={36}
+            className="h-9 w-9 object-contain"
+          />
         </a>
 
         <ul className="hidden items-center gap-8 lg:flex">
@@ -84,9 +86,13 @@ export function SiteNav() {
             exit={{ opacity: 0 }}
           >
             <div className="flex h-16 items-center justify-between px-5 sm:h-20 sm:px-8">
-              <span className="font-serif text-lg font-semibold">
-                Nouveau <span className="text-primary">Monde</span>
-              </span>
+              <Image
+                src="/images/logo.png"
+                alt="Nouveau Monde Logo"
+                width={36}
+                height={36}
+                className="h-9 w-9 object-contain"
+              />
               <button
                 type="button"
                 onClick={() => setOpen(false)}
