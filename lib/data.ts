@@ -134,20 +134,16 @@ export const promotions: Promotion[] = [
     id: 'p1',
     title: 'Happy Hour Doré',
     description: 'Du lundi au jeudi, 18h–20h : -30% sur la carte des cocktails.',
-    badge: 'Tous les soirs',
-    highlight: true,
   },
   {
     id: 'p2',
     title: 'Dîner & Jeux',
     description: 'Un menu deux services offert pour 2h de billard réservées.',
-    badge: 'Pack duo',
   },
   {
     id: 'p3',
     title: 'Brunch du Dimanche',
     description: 'Buffet gastronomique à volonté et animations pour la famille.',
-    badge: 'Week-end',
   },
 ]
 
