@@ -80,10 +80,12 @@ export function Hero() {
           className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
         >
           <a
-            href="#reservation"
+            href="https://wa.me/237689812704"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground shadow-glow transition-transform duration-300 hover:scale-105"
           >
-            Réserver une table
+            Réserver sur WhatsApp
           </a>
           <a
             href="#menu"

@@ -27,15 +27,6 @@ export function IntroStory() {
               />
             </motion.div>
           </div>
-          <Reveal
-            delay={0.2}
-            className="absolute -bottom-6 -right-2 w-44 rounded-xl border border-border bg-card/90 p-5 backdrop-blur-md sm:-right-6 sm:w-52"
-          >
-            <p className="font-serif text-4xl font-semibold text-primary">8</p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              années à redéfinir l&apos;excellence
-            </p>
-          </Reveal>
         </div>
 
         <div>

@@ -45,27 +45,32 @@ export function SiteNav() {
           />
         </a>
 
-        <ul className="hidden items-center gap-8 lg:flex">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="group relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center gap-8">
+          <ul className="hidden items-center gap-8 lg:flex">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="group relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {link.label}
+                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />
+                </a>
+              </li>
+            ))}
+          </ul>
 
-        <div className="flex items-center gap-3">
           <a
-            href="#reservation"
+            href="https://wa.me/237689812704"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden items-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow transition-transform duration-300 hover:scale-105 sm:inline-flex"
           >
             Réserver
           </a>
+        </div>
+
+        <div className="flex items-center gap-3">
           <button
             type="button"
             onClick={() => setOpen(true)}
@@ -130,11 +135,13 @@ export function SiteNav() {
             </motion.ul>
             <div className="mt-8 flex flex-col gap-3 px-5 sm:px-8">
               <a
-                href="#reservation"
+                href="https://wa.me/237689812704"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
                 className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-4 font-semibold text-primary-foreground"
               >
-                Réserver une table
+                Réserver sur WhatsApp
               </a>
               <a
                 href={`tel:${restaurant.phone}`}
