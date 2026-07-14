@@ -7,7 +7,6 @@ import { Stats } from "@/components/sections/stats"
 import { Gallery } from "@/components/sections/gallery"
 import { Promotions } from "@/components/sections/promotions"
 import { Reviews } from "@/components/sections/reviews"
-import { ReservationCta } from "@/components/sections/reservation-cta"
 import { SiteFooter } from "@/components/site-footer"
 
 export default function Home() {
@@ -23,7 +22,6 @@ export default function Home() {
         <Gallery />
         <Promotions />
         <Reviews />
-        <ReservationCta />
       </main>
       <SiteFooter />
     </>

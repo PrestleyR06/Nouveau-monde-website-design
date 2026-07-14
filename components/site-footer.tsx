@@ -9,13 +9,12 @@ const navLinks = [
   { label: "Le Menu", href: "#menu" },
   { label: "Divertissement", href: "#jeux" },
   { label: "Galerie", href: "#galerie" },
-  { label: "Réserver", href: "#reservation" },
 ]
 
 const hours = [
-  { day: "Lundi — Jeudi", time: "11h00 — 23h00" },
-  { day: "Vendredi — Samedi", time: "11h00 — 02h00" },
-  { day: "Dimanche", time: "12h00 — 22h00" },
+  { day: "Monday to Wednesday", time: "12:00 PM — 11:00 PM" },
+  { day: "Thursday to Saturday", time: "12:00 PM — 2:00 AM" },
+  { day: "Sunday", time: "12:00 PM — 2:00 AM" },
 ]
 
 export function SiteFooter() {
@@ -93,12 +92,12 @@ export function SiteFooter() {
               <ul className="mt-6 space-y-4 text-muted-foreground">
                 <li className="flex items-start gap-3">
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                  <span>Boulevard de la Liberté, Akwa, Douala, Cameroun</span>
+                  <span>Carrefour Ancienne Mairie Bonamoussadi, Douala, Cameroon</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="h-4 w-4 shrink-0 text-primary" />
-                  <a href="tel:+237600000000" className="transition-colors hover:text-foreground">
-                    +237 6 00 00 00 00
+                  <a href="https://wa.me/237689812704" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">
+                    +237 6 89 81 27 04
                   </a>
                 </li>
                 <li className="flex items-center gap-3">

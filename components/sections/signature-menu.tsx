@@ -22,19 +22,14 @@ function FoodCard({ item, index }: { item: MenuItem; index: number }) {
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-110"
           />
-          {item.signature && (
+          {item.signature && !['m1', 'm2'].includes(item.id) && (
             <span className="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
               Signature
             </span>
           )}
         </div>
         <div className="flex flex-col gap-3 p-6">
-          <div className="flex items-start justify-between gap-3">
-            <h3 className="font-serif text-2xl leading-tight">{item.name}</h3>
-            <span className="whitespace-nowrap font-medium text-primary">
-              {item.price.toLocaleString('fr-FR')} {item.currency}
-            </span>
-          </div>
+          <h3 className="font-serif text-2xl leading-tight">{item.name}</h3>
           <p className="text-sm leading-relaxed text-muted-foreground">
             {item.description}
           </p>
@@ -63,7 +58,9 @@ export function SignatureMenu() {
           </div>
           <Reveal delay={0.2}>
             <a
-              href="#reservation"
+              href="https://wa.me/237689812704"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold transition-colors hover:border-primary/50 hover:text-primary"
             >
               Voir la carte complète

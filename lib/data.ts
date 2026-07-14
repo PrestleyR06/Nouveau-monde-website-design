@@ -15,26 +15,26 @@ export const restaurant: Restaurant = {
   description:
     "Une nouvelle ère de l'art de recevoir au Cameroun. Cuisine raffinée, lounge élégant et espace de jeux d'exception.",
   city: 'Douala',
-  country: 'Cameroun',
-  address: 'Boulevard de la Liberté, Akwa, Douala',
-  phone: '+237 6 90 00 00 00',
+  country: 'Cameroon',
+  address: 'Carrefour Ancienne Mairie Bonamoussadi, Douala, Cameroon',
+  phone: '+237 6 89 81 27 04',
   email: 'contact@nouveaumonde.cm',
   rating: 4.9,
   reviewsCount: 1280,
   openingHours: [
-    { day: 'Lundi', open: '11:00', close: '23:00' },
-    { day: 'Mardi', open: '11:00', close: '23:00' },
-    { day: 'Mercredi', open: '11:00', close: '23:00' },
-    { day: 'Jeudi', open: '11:00', close: '00:00' },
-    { day: 'Vendredi', open: '11:00', close: '02:00' },
-    { day: 'Samedi', open: '11:00', close: '02:00' },
-    { day: 'Dimanche', open: '12:00', close: '23:00' },
+    { day: 'Monday', open: '12:00', close: '23:00' },
+    { day: 'Tuesday', open: '12:00', close: '23:00' },
+    { day: 'Wednesday', open: '12:00', close: '23:00' },
+    { day: 'Thursday', open: '12:00', close: '02:00' },
+    { day: 'Friday', open: '12:00', close: '02:00' },
+    { day: 'Saturday', open: '12:00', close: '02:00' },
+    { day: 'Sunday', open: '12:00', close: '02:00' },
   ],
   social: {
     instagram: '#',
     tiktok: '#',
     facebook: '#',
-    whatsapp: '#',
+    whatsapp: 'https://wa.me/237689812704',
   },
 }
 
@@ -42,48 +42,48 @@ export const signatureItems: MenuItem[] = [
   {
     id: 'm1',
     categoryId: 'plats',
-    name: 'Filet Royal du Chef',
+    name: 'Brochettes de bœuf grillées avec frites',
     description:
-      'Filet de bœuf maturé, jus corsé au poivre de Penja, légumes glacés.',
-    price: 12500,
+      'Bœuf grillé savoureux accompagné de frites croustillantes et sauces maison.',
+    price: 0,
     currency: 'FCFA',
-    image: '/images/dish-signature.png',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Brochettes%20de%20b%C5%93uf%20grill%C3%A9es%20avec%20frites-TvpcG5MykGHG6BwNAJcNcid3Hft0ny.png',
     signature: true,
-    tags: ['Signature', 'Premium'],
+    tags: ['Grillé', 'Premium'],
   },
   {
     id: 'm2',
-    categoryId: 'mer',
-    name: 'Trésor de la Mer',
+    categoryId: 'desserts',
+    name: 'Profiteroles au chocolat',
     description:
-      'Gambas et homard grillés, beurre citronné aux herbes fraîches.',
-    price: 15000,
+      'Pâte à choux délicate, crème onctueuse et chocolat noir gourmand.',
+    price: 0,
     currency: 'FCFA',
-    image: '/images/dish-seafood.png',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Profiteroles%20au%20chocolat-lZv0YoUu5Da3G0rUAKYDshiF2L3mxm.png',
     signature: true,
-    tags: ['Fruits de mer'],
+    tags: ['Dessert'],
   },
   {
     id: 'm3',
-    categoryId: 'bar',
-    name: 'Signature Doré',
+    categoryId: 'plats',
+    name: 'Wrap grillé au bœuf et fromage',
     description:
-      'Cocktail maison aux notes d’agrumes, miel et épices, finition or.',
-    price: 6500,
+      'Tortilla grillée garnie de bœuf tendre et fromage fondant.',
+    price: 0,
     currency: 'FCFA',
-    image: '/images/cocktail.png',
-    tags: ['Mixologie'],
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Wrap%20grill%C3%A9%20au%20b%C5%93uf%20et%20fromage-AYvY1p954s6Fpw0CAImf73qNCcal0C.png',
+    tags: ['Grillé'],
   },
   {
     id: 'm4',
-    categoryId: 'desserts',
-    name: 'Fondant Précieux',
+    categoryId: 'bar',
+    name: 'Cocktail Tropical Sunrise',
     description:
-      'Cœur de chocolat noir intense, feuille d’or et coulis de fruits rouges.',
-    price: 5500,
+      'Mélange tropical vibrant aux agrumes avec finition coucher de soleil.',
+    price: 0,
     currency: 'FCFA',
-    image: '/images/dessert.png',
-    tags: ['Dessert'],
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Cocktail%20Tropical%20Sunrise-mofhA4dOSvhM5zcrF9TB2KwvxD44Zi.png',
+    tags: ['Mixologie'],
   },
 ]
 
@@ -121,12 +121,12 @@ export const games: GameActivity[] = [
 ]
 
 export const gallery: GalleryImage[] = [
-  { id: 'ph1', src: '/images/atmosphere.png', alt: 'Ambiance conviviale au Nouveau Monde', span: 'wide' },
-  { id: 'ph2', src: '/images/chef.png', alt: 'Le chef dresse un plat signature', span: 'tall' },
-  { id: 'ph3', src: '/images/gallery-bar.png', alt: 'Le bar illuminé du lounge', span: 'normal' },
-  { id: 'ph4', src: '/images/dish-seafood.png', alt: 'Plat de fruits de mer', span: 'normal' },
-  { id: 'ph5', src: '/images/billiards.png', alt: 'Espace billard premium', span: 'wide' },
-  { id: 'ph6', src: '/images/cocktail.png', alt: 'Cocktail signature', span: 'tall' },
+  { id: 'ph1', src: '/images/gallery-5.png', alt: 'Ambiance lounge élégante Nouveau Monde', span: 'wide' },
+  { id: 'ph2', src: '/images/gallery-1.png', alt: 'Client appréciant le service premium', span: 'tall' },
+  { id: 'ph3', src: '/images/gallery-3.png', alt: 'Plat signature gourmet', span: 'normal' },
+  { id: 'ph4', src: '/images/gallery-2.png', alt: 'Couple dégustant cocktails', span: 'normal' },
+  { id: 'ph5', src: '/images/gallery-4.png', alt: 'Espace jeux premium', span: 'wide' },
+  { id: 'ph6', src: '/images/gallery-6.png', alt: 'Cocktail signature élégant', span: 'tall' },
 ]
 
 export const promotions: Promotion[] = [
@@ -134,20 +134,16 @@ export const promotions: Promotion[] = [
     id: 'p1',
     title: 'Happy Hour Doré',
     description: 'Du lundi au jeudi, 18h–20h : -30% sur la carte des cocktails.',
-    badge: 'Tous les soirs',
-    highlight: true,
   },
   {
     id: 'p2',
     title: 'Dîner & Jeux',
     description: 'Un menu deux services offert pour 2h de billard réservées.',
-    badge: 'Pack duo',
   },
   {
     id: 'p3',
     title: 'Brunch du Dimanche',
     description: 'Buffet gastronomique à volonté et animations pour la famille.',
-    badge: 'Week-end',
   },
 ]
 
@@ -181,15 +177,10 @@ export const reviews: Review[] = [
 export const stats: Statistic[] = [
   { id: 's1', label: 'Clients ravis', value: 25000, suffix: '+' },
   { id: 's2', label: 'Note moyenne', value: 4.9, suffix: '/5' },
-  { id: 's3', label: 'Plats signatures', value: 60, suffix: '+' },
-  { id: 's4', label: 'Années d’excellence', value: 8, suffix: '' },
+  { id: 's3', label: 'Plats signatures', value: 15, suffix: '' },
+  { id: 's4', label: 'Années d\'excellence', value: 2, suffix: '' },
 ]
 
 export const navLinks = [
-  { label: 'Accueil', href: '#accueil' },
-  { label: 'Histoire', href: '#histoire' },
   { label: 'Menu', href: '#menu' },
-  { label: 'Jeux', href: '#jeux' },
-  { label: 'Galerie', href: '#galerie' },
-  { label: 'Avis', href: '#avis' },
 ]
