@@ -22,7 +22,7 @@ function FoodCard({ item, index }: { item: MenuItem; index: number }) {
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-110"
           />
-          {item.signature && (
+          {item.signature && !['m1', 'm2'].includes(item.id) && (
             <span className="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
               Signature
             </span>
