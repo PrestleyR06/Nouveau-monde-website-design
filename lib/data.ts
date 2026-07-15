@@ -129,26 +129,26 @@ export const gallery: GalleryImage[] = [
 export const experienceSlides = [
   {
     id: 'exp1',
-    title: 'Signature Dining',
-    description: 'Discover carefully prepared dishes made with fresh ingredients, rich flavors and refined presentation.',
+    title: 'Gastronomie Camerounaise',
+    description: 'Découvrez nos plats traditionnels camerounais préparés avec soin: Ndolé, Brochettes savoureux, et spécialités locales authentiques servies avec finesse.',
     image: '/images/experience-dining.png',
   },
   {
     id: 'exp2',
-    title: 'Cocktails & Relaxation',
-    description: 'Enjoy handcrafted cocktails in an elegant setting designed for relaxing evenings and unforgettable conversations.',
+    title: 'Cocktails & Détente',
+    description: 'Savourez nos cocktails artisanaux dans une ambiance élégante, parfaits pour les soirées relaxantes et conversations inoubliables.',
     image: '/images/experience-cocktails.png',
   },
   {
     id: 'exp3',
-    title: 'Games & Entertainment',
-    description: 'Share memorable moments with friends and family through our entertainment spaces designed for fun and relaxation.',
+    title: 'Jeux & Divertissement',
+    description: 'Partagez des moments mémorables entre amis et famille dans nos espaces de divertissement premium conçus pour le plaisir et la relaxation.',
     image: '/images/experience-games.png',
   },
   {
     id: 'exp4',
-    title: 'Cameroonian Hospitality',
-    description: 'Experience genuine Cameroonian hospitality in a welcoming atmosphere where every guest feels at home.',
+    title: 'Hospitalité Camerounaise',
+    description: 'Vivez l\'hospitalité camerounaise authentique dans une atmosphère accueillante où chaque invité se sent comme chez lui.',
     image: '/images/experience-hospitality.png',
   },
 ]

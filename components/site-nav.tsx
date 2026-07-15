@@ -137,7 +137,7 @@ export function SiteNav() {
                     <a
                       href={link.href}
                       onClick={() => setOpen(false)}
-                      className="block border-b border-border/30 py-5 font-serif text-xl transition-colors hover:text-primary"
+                      className="block border-b border-border/30 py-6 font-serif text-2xl transition-colors hover:text-primary"
                     >
                       {link.label}
                     </a>
@@ -145,26 +145,33 @@ export function SiteNav() {
                 ))}
               </motion.ul>
               <motion.div
-                className="mt-8 flex flex-col gap-3 px-5 sm:px-8"
+                className="flex-1 flex flex-col justify-between px-5 pt-8 pb-6 sm:px-8"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <a
-                  href="https://wa.me/237689812704"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setOpen(false)}
-                  className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-4 font-semibold text-primary-foreground transition-all hover:scale-105 hover:shadow-glow"
-                >
-                  Réserver sur WhatsApp
-                </a>
-                <a
-                  href={`tel:${restaurant.phone}`}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/40 px-6 py-4 text-sm transition-all hover:border-primary/80 hover:bg-primary/5"
-                >
-                  <Phone className="h-4 w-4" /> {restaurant.phone}
-                </a>
+                <div className="space-y-6">
+                  <a
+                    href="https://wa.me/237689812704"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="block w-full rounded-full bg-primary px-6 py-4 text-center font-semibold text-primary-foreground transition-all hover:scale-105 hover:shadow-glow"
+                  >
+                    Réserver sur WhatsApp
+                  </a>
+                  <a
+                    href={`tel:${restaurant.phone}`}
+                    className="block w-full rounded-full border border-primary/40 px-6 py-4 text-center text-sm font-medium transition-all hover:border-primary/80 hover:bg-primary/5"
+                  >
+                    <Phone className="inline h-4 w-4 mr-2" /> {restaurant.phone}
+                  </a>
+                </div>
+                <div className="border-t border-border/30 pt-6 mt-6 text-xs text-muted-foreground space-y-2">
+                  <p className="font-semibold text-foreground">Horaires d&apos;ouverture</p>
+                  <p>Lundi à Mercredi: 12h - 23h</p>
+                  <p>Jeudi à Dimanche: 12h - 02h</p>
+                </div>
               </motion.div>
             </motion.div>
           </>

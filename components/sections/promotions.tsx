@@ -37,7 +37,7 @@ export function Promotions() {
     if (!isAutoPlay) return
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % totalSlides)
-    }, 6000)
+    }, 1500)
     return () => clearInterval(timer)
   }, [isAutoPlay, totalSlides])
 
@@ -169,17 +169,17 @@ export function Promotions() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows - Hidden on Mobile */}
           <button
             onClick={handlePrev}
-            className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/30 bg-white/10 p-3 backdrop-blur-md transition-all hover:border-white/60 hover:bg-white/20 sm:left-6"
+            className="absolute left-4 top-1/2 z-10 -translate-y-1/2 hidden rounded-full border border-white/30 bg-white/10 p-3 backdrop-blur-md transition-all hover:border-white/60 hover:bg-white/20 sm:left-6 md:block"
             aria-label="Slide précédent"
           >
             <ChevronLeft className="h-5 w-5 text-white" />
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/30 bg-white/10 p-3 backdrop-blur-md transition-all hover:border-white/60 hover:bg-white/20 sm:right-6"
+            className="absolute right-4 top-1/2 z-10 -translate-y-1/2 hidden rounded-full border border-white/30 bg-white/10 p-3 backdrop-blur-md transition-all hover:border-white/60 hover:bg-white/20 sm:right-6 md:block"
             aria-label="Slide suivant"
           >
             <ChevronRight className="h-5 w-5 text-white" />
