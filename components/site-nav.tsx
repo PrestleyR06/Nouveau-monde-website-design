@@ -8,15 +8,7 @@ import { navLinks, restaurant } from '@/lib/data'
 import { cn } from '@/lib/utils'
 
 export function SiteNav() {
-  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
@@ -28,10 +20,7 @@ export function SiteNav() {
   return (
     <header
       className={cn(
-        'fixed inset-x-0 top-0 z-50 transition-all duration-500',
-        scrolled
-          ? 'border-b border-border bg-background/80 backdrop-blur-xl'
-          : 'border-b border-transparent bg-transparent',
+        'fixed inset-x-0 top-0 z-50 transition-all duration-500 border-b border-border bg-background/80 backdrop-blur-xl',
       )}
     >
       <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between gap-4 px-5 sm:h-20 sm:px-8">
