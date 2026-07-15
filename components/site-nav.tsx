@@ -3,12 +3,20 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'motion/react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Phone } from 'lucide-react'
 import { navLinks, restaurant } from '@/lib/data'
 import { cn } from '@/lib/utils'
 
 export function SiteNav() {
+  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
@@ -20,7 +28,10 @@ export function SiteNav() {
   return (
     <header
       className={cn(
-        'fixed inset-x-0 top-0 z-50 transition-all duration-500 border-b border-border bg-background/80 backdrop-blur-xl',
+        'fixed inset-x-0 top-0 z-50 transition-all duration-500',
+        scrolled
+          ? 'border-b border-border bg-background/80 backdrop-blur-xl'
+          : 'border-b border-transparent bg-transparent',
       )}
     >
       <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between gap-4 px-5 sm:h-20 sm:px-8">
@@ -149,6 +160,17 @@ export function SiteNav() {
                   >
                     Réserver sur WhatsApp
                   </a>
+                  <a
+                    href={`tel:${restaurant.phone}`}
+                    className="block w-full rounded-full border border-primary/40 px-6 py-4 text-center text-sm font-medium transition-all hover:border-primary/80 hover:bg-primary/5"
+                  >
+                    <Phone className="inline h-4 w-4 mr-2" /> {restaurant.phone}
+                  </a>
+                </div>
+                <div className="border-t border-border/30 pt-6 mt-6 text-xs text-muted-foreground space-y-2">
+                  <p className="font-semibold text-foreground">Horaires d&apos;ouverture</p>
+                  <p>Lundi à Mercredi: 12h - 23h</p>
+                  <p>Jeudi à Dimanche: 12h - 02h</p>
                 </div>
               </motion.div>
             </motion.div>
