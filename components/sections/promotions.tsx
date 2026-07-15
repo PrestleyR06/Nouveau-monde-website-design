@@ -94,7 +94,7 @@ export function Promotions() {
           </Reveal>
           <Reveal delay={0.2}>
             <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
-              Every visit is more than just a meal. Discover a place where exceptional cuisine, entertainment and warm Cameroonian hospitality come together to create unforgettable moments.
+              Chaque visite est bien plus qu'un simple repas. Découvrez un lieu où la cuisine exceptionnelle, le divertissement et l'hospitalité camerounaise chaleureuse se réunissent pour créer des moments inoubliables.
             </p>
           </Reveal>
         </div>
