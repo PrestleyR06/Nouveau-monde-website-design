@@ -12,9 +12,9 @@ const navLinks = [
 ]
 
 const hours = [
-  { day: "Monday to Wednesday", time: "12:00 PM — 11:00 PM" },
-  { day: "Thursday to Saturday", time: "12:00 PM — 2:00 AM" },
-  { day: "Sunday", time: "12:00 PM — 2:00 AM" },
+  { day: "Lundi à Mercredi", time: "12h00 — 23h00" },
+  { day: "Jeudi à Samedi", time: "12h00 — 02h00" },
+  { day: "Dimanche", time: "12h00 — 02h00" },
 ]
 
 export function SiteFooter() {
