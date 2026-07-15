@@ -84,73 +84,97 @@ export function SiteNav() {
 
       <AnimatePresence>
         {open && (
-          <motion.div
-            className="fixed inset-0 z-50 bg-background/95 backdrop-blur-xl lg:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <div className="flex h-16 items-center justify-between px-5 sm:h-20 sm:px-8">
-              <Image
-                src="/images/logo.png"
-                alt="Nouveau Monde Logo"
-                width={36}
-                height={36}
-                className="h-9 w-9 object-contain"
-              />
-              <button
-                type="button"
-                onClick={() => setOpen(false)}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border"
-                aria-label="Fermer le menu"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-            <motion.ul
-              className="flex flex-col gap-2 px-5 pt-6 sm:px-8"
-              initial="hidden"
-              animate="show"
-              variants={{
-                show: { transition: { staggerChildren: 0.06 } },
-              }}
+          <>
+            {/* Backdrop */}
+            <motion.div
+              className="fixed inset-0 z-40 bg-background/40 backdrop-blur-md lg:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setOpen(false)}
+            />
+            {/* Menu Panel */}
+            <motion.div
+              className="fixed inset-y-0 right-0 z-50 w-full max-w-xs overflow-y-auto border-l border-border bg-background/95 backdrop-blur-xl lg:hidden"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             >
-              {navLinks.map((link) => (
-                <motion.li
-                  key={link.href}
-                  variants={{
-                    hidden: { opacity: 0, x: -20 },
-                    show: { opacity: 1, x: 0 },
-                  }}
+              <div className="flex h-16 items-center justify-between border-b border-border/50 px-5 sm:h-20 sm:px-8">
+                <Image
+                  src="/images/logo.png"
+                  alt="Nouveau Monde Logo"
+                  width={36}
+                  height={36}
+                  className="h-9 w-9 object-contain"
+                />
+                <button
+                  type="button"
+                  onClick={() => setOpen(false)}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border transition-colors hover:bg-primary/10"
+                  aria-label="Fermer le menu"
                 >
-                  <a
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="block border-b border-border py-4 font-serif text-3xl"
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+              <motion.ul
+                className="flex flex-col px-5 pt-4 sm:px-8"
+                initial="hidden"
+                animate="show"
+                variants={{
+                  show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+                }}
+              >
+                {navLinks.map((link) => (
+                  <motion.li
+                    key={link.href}
+                    variants={{
+                      hidden: { opacity: 0, x: 20 },
+                      show: { opacity: 1, x: 0 },
+                    }}
                   >
-                    {link.label}
+                    <a
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="block border-b border-border/30 py-6 font-serif text-2xl transition-colors hover:text-primary"
+                    >
+                      {link.label}
+                    </a>
+                  </motion.li>
+                ))}
+              </motion.ul>
+              <motion.div
+                className="flex-1 flex flex-col justify-between px-5 pt-8 pb-6 sm:px-8"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <div className="space-y-6">
+                  <a
+                    href="https://wa.me/237689812704"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="block w-full rounded-full bg-primary px-6 py-4 text-center font-semibold text-primary-foreground transition-all hover:scale-105 hover:shadow-glow"
+                  >
+                    Réserver sur WhatsApp
                   </a>
-                </motion.li>
-              ))}
-            </motion.ul>
-            <div className="mt-8 flex flex-col gap-3 px-5 sm:px-8">
-              <a
-                href="https://wa.me/237689812704"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setOpen(false)}
-                className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-4 font-semibold text-primary-foreground"
-              >
-                Réserver sur WhatsApp
-              </a>
-              <a
-                href={`tel:${restaurant.phone}`}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-4 text-sm"
-              >
-                <Phone className="h-4 w-4" /> {restaurant.phone}
-              </a>
-            </div>
-          </motion.div>
+                  <a
+                    href={`tel:${restaurant.phone}`}
+                    className="block w-full rounded-full border border-primary/40 px-6 py-4 text-center text-sm font-medium transition-all hover:border-primary/80 hover:bg-primary/5"
+                  >
+                    <Phone className="inline h-4 w-4 mr-2" /> {restaurant.phone}
+                  </a>
+                </div>
+                <div className="border-t border-border/30 pt-6 mt-6 text-xs text-muted-foreground space-y-2">
+                  <p className="font-semibold text-foreground">Horaires d&apos;ouverture</p>
+                  <p>Lundi à Mercredi: 12h - 23h</p>
+                  <p>Jeudi à Dimanche: 12h - 02h</p>
+                </div>
+              </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>

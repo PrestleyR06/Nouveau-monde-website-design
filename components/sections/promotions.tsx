@@ -1,23 +1,24 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'motion/react'
-import { Sparkles, ChevronLeft, ChevronRight } from 'lucide-react'
-import { promotions } from '@/lib/data'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { experienceSlides } from '@/lib/data'
 import { Reveal } from '@/components/animations/reveal'
-import { cn } from '@/lib/utils'
 
 export function Promotions() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoPlay, setIsAutoPlay] = useState(true)
-  const [direction, setDirection] = useState<'left' | 'right'>('right')
+  const [touchStart, setTouchStart] = useState(0)
+  const [touchEnd, setTouchEnd] = useState(0)
 
-  const itemsPerPage = 3
-  const totalSlides = Math.ceil(promotions.length / itemsPerPage)
+  const slides = experienceSlides
+  const totalSlides = slides.length
 
   const slideVariants = {
-    enter: (dir: string) => ({
-      x: dir === 'right' ? 1000 : -1000,
+    enter: (direction: number) => ({
+      x: direction > 0 ? 1000 : -1000,
       opacity: 0,
     }),
     center: {
@@ -25,9 +26,9 @@ export function Promotions() {
       x: 0,
       opacity: 1,
     },
-    exit: (dir: string) => ({
+    exit: (direction: number) => ({
       zIndex: 0,
-      x: dir === 'right' ? -1000 : 1000,
+      x: direction > 0 ? -1000 : 1000,
       opacity: 0,
     }),
   }
@@ -35,159 +36,182 @@ export function Promotions() {
   useEffect(() => {
     if (!isAutoPlay) return
     const timer = setInterval(() => {
-      setDirection('right')
       setCurrentIndex((prev) => (prev + 1) % totalSlides)
-    }, 5500)
+    }, 1500)
     return () => clearInterval(timer)
   }, [isAutoPlay, totalSlides])
 
   const handlePrev = () => {
-    setDirection('left')
     setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides)
     setIsAutoPlay(false)
   }
 
   const handleNext = () => {
-    setDirection('right')
     setCurrentIndex((prev) => (prev + 1) % totalSlides)
     setIsAutoPlay(false)
   }
 
   const handleDotClick = (index: number) => {
-    setDirection(index > currentIndex ? 'right' : 'left')
     setCurrentIndex(index)
     setIsAutoPlay(false)
   }
 
-  const visiblePromos = promotions.slice(
-    currentIndex * itemsPerPage,
-    (currentIndex + 1) * itemsPerPage
-  )
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    setTouchEnd(e.changedTouches[0].clientX)
+    handleSwipe()
+  }
+
+  const handleSwipe = () => {
+    if (!touchStart || !touchEnd) return
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > 50
+    const isRightSwipe = distance < -50
+
+    if (isLeftSwipe) handleNext()
+    if (isRightSwipe) handlePrev()
+  }
+
+  const currentSlide = slides[currentIndex]
 
   return (
     <section className="relative bg-background py-24 sm:py-32">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-        <div className="mb-12 max-w-2xl">
+        {/* Header */}
+        <div className="mb-16 max-w-3xl">
           <Reveal>
-            <span className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-              Promotions
+            <span className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+              Nouveau Monde Experience
             </span>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="mt-4 text-balance font-serif text-4xl font-medium leading-tight sm:text-5xl">
-              Des offres <span className="italic text-gradient-gold">à savourer</span>
+              Vivez l&apos;expérience <span className="italic text-gradient-gold">Nouveau Monde</span>
             </h2>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <p className="mt-6 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
+              Every visit is more than just a meal. Discover a place where exceptional cuisine, entertainment and warm Cameroonian hospitality come together to create unforgettable moments.
+            </p>
           </Reveal>
         </div>
 
-        <div
-          className="relative"
+        {/* Premium Cinematic Slideshow */}
+        <motion.div
+          className="relative overflow-hidden rounded-2xl border border-primary/20 bg-background shadow-2xl"
           onMouseEnter={() => setIsAutoPlay(false)}
           onMouseLeave={() => setIsAutoPlay(true)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
-          <AnimatePresence initial={false} custom={direction} mode="wait">
+          <AnimatePresence initial={false} mode="wait">
             <motion.div
               key={currentIndex}
-              custom={direction}
+              custom={currentIndex}
               variants={slideVariants}
               initial="enter"
               animate="center"
               exit="exit"
               transition={{
                 x: { type: 'spring', stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 },
+                opacity: { duration: 0.5 },
               }}
-              className="grid gap-6 lg:grid-cols-3"
+              className="relative"
             >
-              {visiblePromos.map((promo, i) => (
+              {/* Background Image with Zoom */}
+              <div className="relative aspect-[16/9] overflow-hidden bg-background">
                 <motion.div
-                  key={promo.id}
-                  whileHover={{ y: -6 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-                  className={cn(
-                    'relative flex h-full flex-col justify-between gap-8 overflow-hidden rounded-xl border p-8',
-                    promo.highlight
-                      ? 'border-primary/40 bg-primary text-primary-foreground shadow-glow'
-                      : 'border-border bg-card',
-                  )}
+                  initial={{ scale: 1.05 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 1.05 }}
+                  transition={{ duration: 6, ease: 'easeOut' }}
+                  className="absolute inset-0"
                 >
-                  <div>
-                    {promo.badge && (
-                      <span
-                        className={cn(
-                          'inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold',
-                          promo.highlight
-                            ? 'bg-primary-foreground/15 text-primary-foreground'
-                            : 'bg-secondary text-primary',
-                        )}
-                      >
-                        <Sparkles className="h-3.5 w-3.5" />
-                        {promo.badge}
-                      </span>
-                    )}
-                    <h3 className="mt-6 font-serif text-3xl leading-tight">
-                      {promo.title}
-                    </h3>
-                    <p
-                      className={cn(
-                        'mt-3 text-pretty leading-relaxed',
-                        promo.highlight ? 'text-primary-foreground/80' : 'text-muted-foreground',
-                      )}
-                    >
-                      {promo.description}
-                    </p>
-                  </div>
-                  <a
-                    href="https://wa.me/237689812704"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cn(
-                      'inline-flex w-fit items-center rounded-full px-5 py-2.5 text-sm font-semibold transition-transform hover:scale-105',
-                      promo.highlight
-                        ? 'bg-primary-foreground text-primary'
-                        : 'bg-primary text-primary-foreground',
-                    )}
-                  >
-                    J&apos;en profite
-                  </a>
+                  <Image
+                    src={currentSlide.image}
+                    alt={currentSlide.title}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
                 </motion.div>
-              ))}
+
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+              </div>
+
+              {/* Content Overlay */}
+              <div className="absolute inset-0 flex items-end">
+                <div className="w-full p-8 sm:p-12 lg:p-16">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.6 }}
+                    className="max-w-2xl"
+                  >
+                    <h3 className="font-serif text-3xl font-medium sm:text-4xl">
+                      {currentSlide.title}
+                    </h3>
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.4, duration: 0.6 }}
+                      className="mt-4 max-w-xl text-pretty text-sm leading-relaxed text-foreground/90 sm:text-base"
+                    >
+                      {currentSlide.description}
+                    </motion.p>
+                  </motion.div>
+                </div>
+              </div>
             </motion.div>
           </AnimatePresence>
 
-          {totalSlides > 1 && (
-            <>
-              <button
-                onClick={handlePrev}
-                className="absolute -left-12 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full border border-border hover:border-primary/50 transition-colors lg:flex hidden"
-                aria-label="Slide précédent"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <button
-                onClick={handleNext}
-                className="absolute -right-12 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full border border-border hover:border-primary/50 transition-colors lg:flex hidden"
-                aria-label="Slide suivant"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
+          {/* Navigation Arrows - Hidden on Mobile */}
+          <button
+            onClick={handlePrev}
+            className="absolute left-4 top-1/2 z-10 -translate-y-1/2 hidden rounded-full border border-white/30 bg-white/10 p-3 backdrop-blur-md transition-all hover:border-white/60 hover:bg-white/20 sm:left-6 md:block"
+            aria-label="Slide précédent"
+          >
+            <ChevronLeft className="h-5 w-5 text-white" />
+          </button>
+          <button
+            onClick={handleNext}
+            className="absolute right-4 top-1/2 z-10 -translate-y-1/2 hidden rounded-full border border-white/30 bg-white/10 p-3 backdrop-blur-md transition-all hover:border-white/60 hover:bg-white/20 sm:right-6 md:block"
+            aria-label="Slide suivant"
+          >
+            <ChevronRight className="h-5 w-5 text-white" />
+          </button>
 
-              <div className="mt-8 flex justify-center gap-2">
-                {Array.from({ length: totalSlides }).map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleDotClick(index)}
-                    className={cn(
-                      'h-2 rounded-full transition-all duration-300',
-                      index === currentIndex ? 'w-8 bg-primary' : 'w-2 bg-border hover:bg-primary/50'
-                    )}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
-              </div>
-            </>
-          )}
-        </div>
+          {/* Pagination Dots */}
+          <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+            {slides.map((_, index) => (
+              <motion.button
+                key={index}
+                onClick={() => handleDotClick(index)}
+                className={`rounded-full transition-all ${
+                  index === currentIndex
+                    ? 'h-2 w-8 bg-primary'
+                    : 'h-2 w-2 bg-white/50 hover:bg-white/80'
+                }`}
+                whileHover={{ scale: 1.2 }}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Slide Counter */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="mt-8 text-center text-sm text-muted-foreground"
+        >
+          {currentIndex + 1} / {totalSlides}
+        </motion.div>
       </div>
     </section>
   )

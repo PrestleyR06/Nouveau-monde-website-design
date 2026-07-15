@@ -51,19 +51,11 @@ export function Gaming() {
                 </motion.div>
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-6">
-                  <div className="flex items-center justify-between">
+                  <div>
                     <h3 className="font-serif text-2xl">{game.name}</h3>
-                    {game.pricePerHour && (
-                      <span className="rounded-full border border-primary/40 bg-background/40 px-3 py-1 text-xs font-medium text-primary backdrop-blur-md">
-                        {game.pricePerHour.toLocaleString('fr-FR')} {game.currency}/h
-                      </span>
-                    )}
                   </div>
                   <p className="mt-3 max-h-0 overflow-hidden text-sm leading-relaxed text-foreground/80 opacity-0 transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100">
                     {game.description}
-                  </p>
-                  <p className="mt-3 text-xs uppercase tracking-wider text-muted-foreground">
-                    {game.capacity}
                   </p>
                 </div>
               </motion.article>

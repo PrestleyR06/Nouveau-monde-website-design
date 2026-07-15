@@ -20,8 +20,8 @@ export function IntroStory() {
           <div className="relative aspect-[4/5] overflow-hidden rounded-xl">
             <motion.div style={{ y }} className="absolute inset-[-8%]">
               <Image
-                src="/images/chef.png"
-                alt="Le chef du Nouveau Monde dresse un plat signature"
+                src="/images/chef-cameroon.png"
+                alt="Le chef camerounais du Nouveau Monde prépare une création gastronomique authentique"
                 fill
                 className="object-cover"
               />

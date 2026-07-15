@@ -39,51 +39,50 @@ export const restaurant: Restaurant = {
 }
 
 export const signatureItems: MenuItem[] = [
+  // Grillades
   {
     id: 'm1',
-    categoryId: 'plats',
+    categoryId: 'grillades',
     name: 'Brochettes de bœuf grillées avec frites',
-    description:
-      'Bœuf grillé savoureux accompagné de frites croustillantes et sauces maison.',
+    description: 'Bœuf grillé savoureux accompagné de frites croustillantes et sauces maison.',
     price: 0,
     currency: 'FCFA',
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Brochettes%20de%20b%C5%93uf%20grill%C3%A9es%20avec%20frites-TvpcG5MykGHG6BwNAJcNcid3Hft0ny.png',
     signature: true,
-    tags: ['Grillé', 'Premium'],
-  },
-  {
-    id: 'm2',
-    categoryId: 'desserts',
-    name: 'Profiteroles au chocolat',
-    description:
-      'Pâte à choux délicate, crème onctueuse et chocolat noir gourmand.',
-    price: 0,
-    currency: 'FCFA',
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Profiteroles%20au%20chocolat-lZv0YoUu5Da3G0rUAKYDshiF2L3mxm.png',
-    signature: true,
-    tags: ['Dessert'],
+    tags: ['Grillades'],
   },
   {
     id: 'm3',
     categoryId: 'plats',
     name: 'Wrap grillé au bœuf et fromage',
-    description:
-      'Tortilla grillée garnie de bœuf tendre et fromage fondant.',
+    description: 'Tortilla grillée garnie de bœuf tendre et fromage fondant.',
     price: 0,
     currency: 'FCFA',
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Wrap%20grill%C3%A9%20au%20b%C5%93uf%20et%20fromage-AYvY1p954s6Fpw0CAImf73qNCcal0C.png',
-    tags: ['Grillé'],
+    tags: ['Plats'],
   },
+  // Desserts
+  {
+    id: 'm2',
+    categoryId: 'desserts',
+    name: 'Profiteroles au chocolat',
+    description: 'Pâte à choux délicate, crème onctueuse et chocolat noir gourmand.',
+    price: 0,
+    currency: 'FCFA',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Profiteroles%20au%20chocolat-lZv0YoUu5Da3G0rUAKYDshiF2L3mxm.png',
+    signature: true,
+    tags: ['Desserts'],
+  },
+  // Cocktails
   {
     id: 'm4',
-    categoryId: 'bar',
+    categoryId: 'cocktails',
     name: 'Cocktail Tropical Sunrise',
-    description:
-      'Mélange tropical vibrant aux agrumes avec finition coucher de soleil.',
+    description: 'Mélange tropical vibrant aux agrumes avec finition coucher de soleil.',
     price: 0,
     currency: 'FCFA',
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Cocktail%20Tropical%20Sunrise-mofhA4dOSvhM5zcrF9TB2KwvxD44Zi.png',
-    tags: ['Mixologie'],
+    tags: ['Cocktails'],
   },
 ]
 
@@ -121,31 +120,40 @@ export const games: GameActivity[] = [
 ]
 
 export const gallery: GalleryImage[] = [
-  { id: 'ph1', src: '/images/gallery-5.png', alt: 'Ambiance lounge élégante Nouveau Monde', span: 'wide' },
-  { id: 'ph2', src: '/images/gallery-1.png', alt: 'Client appréciant le service premium', span: 'tall' },
-  { id: 'ph3', src: '/images/gallery-3.png', alt: 'Plat signature gourmet', span: 'normal' },
-  { id: 'ph4', src: '/images/gallery-2.png', alt: 'Couple dégustant cocktails', span: 'normal' },
-  { id: 'ph5', src: '/images/gallery-4.png', alt: 'Espace jeux premium', span: 'wide' },
-  { id: 'ph6', src: '/images/gallery-6.png', alt: 'Cocktail signature élégant', span: 'tall' },
+  { id: 'ph1', src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Jul%2014%2C%202026%2C%2002_53_13%20PM-eZ9Wbw7TbX5qhGHs5mYudLMmgviLQb.png', alt: 'Devanture élégante du Nouveau Monde', span: 'wide' },
+  { id: 'ph2', src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Jul%2014%2C%202026%2C%2002_55_39%20PM-bjepCYwq36xnvZEH8VGOWjkVN5aN49.png', alt: 'Lounge moderne avec ambiance chaleureuse', span: 'tall' },
+  { id: 'ph3', src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Jul%2015%2C%202026%2C%2011_49_14%20AM-5rDB8XgnEWkM9Id9rQiYegn6G1IBGI.png', alt: 'Cocktail signature élégant', span: 'normal' },
+  { id: 'ph4', src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Jul%2014%2C%202026%2C%2002_58_09%20PM-t6qnf7Z3HCZGgcRgNvpfSPNuogPJul.png', alt: 'Communauté Nouveau Monde - nos clients', span: 'normal' },
 ]
 
-export const promotions: Promotion[] = [
+export const experienceSlides = [
   {
-    id: 'p1',
-    title: 'Happy Hour Doré',
-    description: 'Du lundi au jeudi, 18h–20h : -30% sur la carte des cocktails.',
+    id: 'exp1',
+    title: 'Gastronomie Camerounaise',
+    description: 'Découvrez nos plats traditionnels camerounais préparés avec soin: Ndolé, Brochettes savoureux, et spécialités locales authentiques servies avec finesse.',
+    image: '/images/experience-dining.png',
   },
   {
-    id: 'p2',
-    title: 'Dîner & Jeux',
-    description: 'Un menu deux services offert pour 2h de billard réservées.',
+    id: 'exp2',
+    title: 'Cocktails & Détente',
+    description: 'Savourez nos cocktails artisanaux dans une ambiance élégante, parfaits pour les soirées relaxantes et conversations inoubliables.',
+    image: '/images/experience-cocktails.png',
   },
   {
-    id: 'p3',
-    title: 'Brunch du Dimanche',
-    description: 'Buffet gastronomique à volonté et animations pour la famille.',
+    id: 'exp3',
+    title: 'Jeux & Divertissement',
+    description: 'Partagez des moments mémorables entre amis et famille dans nos espaces de divertissement premium conçus pour le plaisir et la relaxation.',
+    image: '/images/experience-games.png',
+  },
+  {
+    id: 'exp4',
+    title: 'Hospitalité Camerounaise',
+    description: 'Vivez l\'hospitalité camerounaise authentique dans une atmosphère accueillante où chaque invité se sent comme chez lui.',
+    image: '/images/experience-hospitality.png',
   },
 ]
+
+export const promotions: Promotion[] = []
 
 export const reviews: Review[] = [
   {
