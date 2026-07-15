@@ -126,23 +126,34 @@ export const gallery: GalleryImage[] = [
   { id: 'ph4', src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Jul%2014%2C%202026%2C%2002_58_09%20PM-t6qnf7Z3HCZGgcRgNvpfSPNuogPJul.png', alt: 'Communauté Nouveau Monde - nos clients', span: 'normal' },
 ]
 
-export const promotions: Promotion[] = [
+export const experienceSlides = [
   {
-    id: 'p1',
-    title: 'Happy Hour Doré',
-    description: 'Du lundi au jeudi, 18h–20h : -30% sur la carte des cocktails.',
+    id: 'exp1',
+    title: 'Signature Dining',
+    description: 'Discover carefully prepared dishes made with fresh ingredients, rich flavors and refined presentation.',
+    image: '/images/experience-dining.png',
   },
   {
-    id: 'p2',
-    title: 'Dîner & Jeux',
-    description: 'Un menu deux services offert pour 2h de billard réservées.',
+    id: 'exp2',
+    title: 'Cocktails & Relaxation',
+    description: 'Enjoy handcrafted cocktails in an elegant setting designed for relaxing evenings and unforgettable conversations.',
+    image: '/images/experience-cocktails.png',
   },
   {
-    id: 'p3',
-    title: 'Brunch du Dimanche',
-    description: 'Buffet gastronomique à volonté et animations pour la famille.',
+    id: 'exp3',
+    title: 'Games & Entertainment',
+    description: 'Share memorable moments with friends and family through our entertainment spaces designed for fun and relaxation.',
+    image: '/images/experience-games.png',
+  },
+  {
+    id: 'exp4',
+    title: 'Cameroonian Hospitality',
+    description: 'Experience genuine Cameroonian hospitality in a welcoming atmosphere where every guest feels at home.',
+    image: '/images/experience-hospitality.png',
   },
 ]
+
+export const promotions: Promotion[] = []
 
 export const reviews: Review[] = [
   {
