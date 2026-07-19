@@ -1,7 +1,9 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'motion/react'
+import { ArrowLeft } from 'lucide-react'
 import { restaurantMenuData } from '@/lib/data'
 import { Reveal } from '@/components/animations/reveal'
 
@@ -180,6 +182,29 @@ function CategoryNavigation({
   )
 }
 
+function ReturnButton() {
+  const router = useRouter()
+
+  const handleReturnClick = () => {
+    // Store flag to scroll to menu section when returning
+    sessionStorage.setItem('scrollToMenu', 'true')
+    router.push('/')
+  }
+
+  return (
+    <motion.button
+      onClick={handleReturnClick}
+      whileHover={{ x: -4 }}
+      whileTap={{ scale: 0.95 }}
+      className="group inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-primary bg-transparent text-primary hover:bg-primary/10 transition-all duration-300 hover:shadow-lg"
+      aria-label="Return to homepage"
+    >
+      <ArrowLeft className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+      <span className="text-sm font-medium">Retour à l'accueil</span>
+    </motion.button>
+  )
+}
+
 export function RestaurantMenu() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const categoriesRef = useRef<(HTMLElement | null)[]>([])
@@ -205,6 +230,13 @@ export function RestaurantMenu() {
       {/* Header */}
       <div className="relative py-16 sm:py-24 border-b border-primary/20">
         <div className="mx-auto max-w-[1200px] px-5 sm:px-8">
+          {/* Return Button */}
+          <Reveal delay={-0.1}>
+            <div className="mb-8">
+              <ReturnButton />
+            </div>
+          </Reveal>
+
           <Reveal>
             <span className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
               Carte Complète

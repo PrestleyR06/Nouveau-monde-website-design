@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect } from "react"
 import { SiteNav } from "@/components/site-nav"
 import { Hero } from "@/components/sections/hero"
 import { IntroStory } from "@/components/sections/intro-story"
@@ -10,6 +13,22 @@ import { Reviews } from "@/components/sections/reviews"
 import { SiteFooter } from "@/components/site-footer"
 
 export default function Home() {
+  useEffect(() => {
+    // Check if user is returning from menu page
+    const shouldScrollToMenu = sessionStorage.getItem('scrollToMenu')
+    if (shouldScrollToMenu) {
+      sessionStorage.removeItem('scrollToMenu')
+      
+      // Wait for page to be fully rendered, then scroll to menu section
+      setTimeout(() => {
+        const menuSection = document.getElementById('menu')
+        if (menuSection) {
+          menuSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 100)
+    }
+  }, [])
+
   return (
     <>
       <SiteNav />
