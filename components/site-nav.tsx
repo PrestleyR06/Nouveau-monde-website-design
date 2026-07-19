@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'motion/react'
 import { Menu, X, Phone } from 'lucide-react'
@@ -10,6 +11,8 @@ import { cn } from '@/lib/utils'
 export function SiteNav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -19,11 +22,27 @@ export function SiteNav() {
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
+    document.body.style.overflow = open ? 'hidden' : 'auto'
     return () => {
-      document.body.style.overflow = ''
+      document.body.style.overflow = 'auto'
     }
   }, [open])
+
+  const handleNavLinkClick = useCallback((href: string) => {
+    setOpen(false)
+    
+    // If on menu page, navigate to home first
+    if (pathname === '/menu') {
+      sessionStorage.setItem('scrollToSection', href)
+      router.push('/')
+    } else {
+      // Already on homepage, scroll to section
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }
+  }, [pathname, router])
 
   return (
     <header
@@ -47,17 +66,15 @@ export function SiteNav() {
 
         <div className="flex items-center gap-8">
           <ul className="hidden items-center gap-8 lg:flex">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="group relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  {link.label}
-                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />
-                </a>
-              </li>
-            ))}
+            <li>
+              <button
+                onClick={() => handleNavLinkClick('#menu')}
+                className="group relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                Menu
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />
+              </button>
+            </li>
           </ul>
 
           <a
@@ -92,16 +109,19 @@ export function SiteNav() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setOpen(false)}
+              aria-hidden="true"
             />
             {/* Menu Panel */}
             <motion.div
-              className="fixed inset-y-0 right-0 z-50 w-full max-w-xs overflow-y-auto border-l border-border bg-background/95 backdrop-blur-xl lg:hidden"
+              className="fixed inset-y-0 right-0 z-50 flex w-full max-w-xs flex-col border-l border-border bg-background/95 backdrop-blur-xl lg:hidden"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              style={{ top: 0 }}
             >
-              <div className="flex h-16 items-center justify-between border-b border-border/50 px-5 sm:h-20 sm:px-8">
+              {/* Header */}
+              <div className="flex h-16 shrink-0 items-center justify-between border-b border-border/50 px-5 sm:h-20 sm:px-8">
                 <Image
                   src="/images/logo.png"
                   alt="Nouveau Monde Logo"
@@ -118,34 +138,18 @@ export function SiteNav() {
                   <X className="h-5 w-5" />
                 </button>
               </div>
-              <motion.ul
-                className="flex flex-col px-5 pt-4 sm:px-8"
-                initial="hidden"
-                animate="show"
-                variants={{
-                  show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-                }}
+
+              {/* Navigation Links */}
+              <button
+                onClick={() => handleNavLinkClick('#menu')}
+                className="block w-full border-b border-border/30 px-5 py-6 text-left font-serif text-2xl text-foreground transition-colors hover:text-primary sm:px-8"
               >
-                {navLinks.map((link) => (
-                  <motion.li
-                    key={link.href}
-                    variants={{
-                      hidden: { opacity: 0, x: 20 },
-                      show: { opacity: 1, x: 0 },
-                    }}
-                  >
-                    <a
-                      href={link.href}
-                      onClick={() => setOpen(false)}
-                      className="block border-b border-border/30 py-6 font-serif text-2xl transition-colors hover:text-primary"
-                    >
-                      {link.label}
-                    </a>
-                  </motion.li>
-                ))}
-              </motion.ul>
+                Menu
+              </button>
+
+              {/* Footer Content */}
               <motion.div
-                className="flex-1 flex flex-col justify-between px-5 pt-8 pb-6 sm:px-8"
+                className="flex flex-1 flex-col justify-between overflow-y-auto px-5 py-6 sm:px-8"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
@@ -167,7 +171,7 @@ export function SiteNav() {
                     <Phone className="inline h-4 w-4 mr-2" /> {restaurant.phone}
                   </a>
                 </div>
-                <div className="border-t border-border/30 pt-6 mt-6 text-xs text-muted-foreground space-y-2">
+                <div className="border-t border-border/30 pt-6 mt-auto text-xs text-muted-foreground space-y-2">
                   <p className="font-semibold text-foreground">Horaires d&apos;ouverture</p>
                   <p>Lundi à Mercredi: 12h - 23h</p>
                   <p>Jeudi à Dimanche: 12h - 02h</p>
