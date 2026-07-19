@@ -16,14 +16,26 @@ export default function Home() {
   useEffect(() => {
     // Check if user is returning from menu page
     const shouldScrollToMenu = sessionStorage.getItem('scrollToMenu')
+    const scrollToSection = sessionStorage.getItem('scrollToSection')
+    
+    // Handle scroll-to-menu (from return button on menu page)
     if (shouldScrollToMenu) {
       sessionStorage.removeItem('scrollToMenu')
-      
-      // Wait for page to be fully rendered, then scroll to menu section
       setTimeout(() => {
         const menuSection = document.getElementById('menu')
         if (menuSection) {
           menuSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 100)
+    }
+    
+    // Handle scroll-to-section (from menu navigation)
+    if (scrollToSection) {
+      sessionStorage.removeItem('scrollToSection')
+      setTimeout(() => {
+        const section = document.querySelector(scrollToSection)
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' })
         }
       }, 100)
     }
