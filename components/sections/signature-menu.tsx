@@ -138,9 +138,7 @@ export function SignatureMenu() {
               Intéressé par le menu complet ?
             </p>
             <a
-              href="https://wa.me/237689812704"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/menu"
               className="group inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-glow"
             >
               Voir la carte complète
