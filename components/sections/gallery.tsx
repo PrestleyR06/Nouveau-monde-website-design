@@ -29,12 +29,12 @@ export function Gallery() {
           </Reveal>
         </div>
 
-        <div className="grid auto-rows-[200px] grid-cols-2 gap-4 sm:grid-cols-3 sm:auto-rows-[240px]">
+        <div className="grid auto-rows-[180px] grid-cols-2 gap-3 sm:auto-rows-[240px] sm:gap-4 md:grid-cols-3">
           {gallery.map((img, i) => (
             <Reveal
               key={img.id}
               delay={i * 0.06}
-              className={cn('group relative overflow-hidden rounded-xl', spanClasses[img.span ?? 'normal'])}
+              className={cn('group relative overflow-hidden rounded-xl', img.span !== 'normal' && 'hidden sm:block', spanClasses[img.span ?? 'normal'])}
             >
               <motion.div whileHover={{ scale: 1.06 }} transition={{ duration: 0.6 }} className="absolute inset-0">
                 <Image src={img.src || '/placeholder.svg'} alt={img.alt} fill className="object-cover" />

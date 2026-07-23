@@ -20,7 +20,7 @@ const hours = [
 export function SiteFooter() {
   return (
     <footer className="relative border-t border-border bg-background">
-      <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-8">
         <Reveal>
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
             {/* Brand */}

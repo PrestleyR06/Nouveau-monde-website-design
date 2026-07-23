@@ -21,7 +21,7 @@ export function Reviews() {
           </Reveal>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {reviews.map((review, i) => (
             <Reveal key={review.id} delay={i * 0.1}>
               <figure className="flex h-full flex-col gap-5 rounded-xl border border-border bg-card p-8">

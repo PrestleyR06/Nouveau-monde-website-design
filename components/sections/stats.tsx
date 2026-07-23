@@ -7,7 +7,7 @@ import { Reveal } from '@/components/animations/reveal'
 export function Stats() {
   return (
     <section className="border-y border-border bg-background py-16 sm:py-20">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-2 gap-y-10 px-5 sm:px-8 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-2 gap-y-8 gap-x-4 px-5 sm:px-8 md:grid-cols-3 lg:grid-cols-4 lg:gap-y-10">
         {stats.map((stat, i) => {
           const decimals = stat.value % 1 !== 0 ? 1 : 0
           return (

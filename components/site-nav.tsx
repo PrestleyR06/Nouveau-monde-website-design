@@ -81,7 +81,7 @@ export function SiteNav() {
             href="https://wa.me/237689812704"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow transition-transform duration-300 hover:scale-105 sm:inline-flex"
+            className="hidden items-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform duration-300 hover:scale-105 sm:inline-flex"
           >
             Réserver
           </a>
@@ -91,10 +91,10 @@ export function SiteNav() {
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground lg:hidden"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:bg-primary/10 lg:hidden"
             aria-label="Ouvrir le menu"
           >
-            <Menu className="h-5 w-5" />
+            <Menu className="h-6 w-6" />
           </button>
         </div>
       </nav>
@@ -113,7 +113,7 @@ export function SiteNav() {
             />
             {/* Menu Panel */}
             <motion.div
-              className="fixed inset-y-0 right-0 z-50 flex w-full max-w-xs flex-col border-l border-border bg-background/95 backdrop-blur-xl lg:hidden"
+              className="fixed inset-y-0 right-0 z-50 flex w-full max-w-sm sm:max-w-xs flex-col border-l border-border bg-background/95 backdrop-blur-xl lg:hidden"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
@@ -132,17 +132,17 @@ export function SiteNav() {
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border transition-colors hover:bg-primary/10"
+                  className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-border transition-colors hover:bg-primary/10"
                   aria-label="Fermer le menu"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-6 w-6" />
                 </button>
               </div>
 
               {/* Navigation Links */}
               <button
                 onClick={() => handleNavLinkClick('#menu')}
-                className="block w-full border-b border-border/30 px-5 py-6 text-left font-serif text-2xl text-foreground transition-colors hover:text-primary sm:px-8"
+                className="block w-full border-b border-border/30 px-5 py-5 text-left font-serif text-2xl text-foreground transition-colors hover:text-primary active:bg-primary/5 sm:px-8"
               >
                 Menu
               </button>
