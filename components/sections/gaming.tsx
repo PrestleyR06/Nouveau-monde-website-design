@@ -30,12 +30,12 @@ export function Gaming() {
           </Reveal>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
           {games.map((game, i) => (
             <Reveal key={game.id} delay={i * 0.1}>
               <motion.article
                 whileHover="hover"
-                className="group relative h-80 overflow-hidden rounded-xl border border-border sm:h-96 lg:h-[26rem]"
+                className="group relative h-[26rem] overflow-hidden rounded-xl border border-border"
               >
                 <motion.div
                   className="absolute inset-0"

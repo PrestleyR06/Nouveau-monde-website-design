@@ -36,11 +36,11 @@ export function Hero() {
 
       <motion.div
         style={{ opacity }}
-        className="relative z-10 mx-auto w-full max-w-[1400px] px-5 pb-16 pt-24 sm:px-8 sm:pb-24 sm:pt-32"
+        className="relative z-10 mx-auto w-full max-w-[1400px] px-5 pb-16 pt-32 sm:px-8 sm:pb-24"
       >
 
 
-        <h1 className="max-w-4xl text-balance font-serif text-4xl font-medium leading-[0.95] tracking-tight xs:text-5xl sm:text-7xl lg:text-8xl">
+        <h1 className="max-w-4xl text-balance font-serif text-5xl font-medium leading-[0.95] tracking-tight sm:text-7xl lg:text-8xl">
           <span className="block overflow-hidden">
             <motion.span
               className="block"
